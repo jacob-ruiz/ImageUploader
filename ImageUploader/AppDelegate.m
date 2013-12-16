@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
 
 #import "MasterViewController.h"
 
@@ -22,6 +23,19 @@
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     MasterViewController *controller = (MasterViewController *)navigationController.topViewController;
     controller.managedObjectContext = self.managedObjectContext;
+    
+    // Set up Parse
+    [Parse setApplicationId:@"2Op4d2hADVcKsxldzt6xjmweABOKPA9xXLawUvko"
+                  clientKey:@"uIxFO5HGfrYEhOZklCDjNxEvXI8LZ1irOZvhR2bB"];
+    
+    // Track basic statistics around application opens on Parse
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    // Test Parse
+    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+    [testObject setObject:@"bar" forKey:@"foo"];
+    [testObject save];
+    
     return YES;
 }
 							

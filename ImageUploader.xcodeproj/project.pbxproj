@@ -25,6 +25,16 @@
 		68B6D918185E7750003DA451 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D8F3185E7750003DA451 /* CoreData.framework */; };
 		68B6D920185E7750003DA451 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68B6D91E185E7750003DA451 /* InfoPlist.strings */; };
 		68B6D922185E7750003DA451 /* ImageUploaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B6D921185E7750003DA451 /* ImageUploaderTests.m */; };
+		68B6D92C185E778E003DA451 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D92B185E778E003DA451 /* Parse.framework */; };
+		68B6D936185E780E003DA451 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D92D185E780E003DA451 /* AudioToolbox.framework */; };
+		68B6D937185E780E003DA451 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D92E185E780E003DA451 /* CFNetwork.framework */; };
+		68B6D938185E780E003DA451 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D92F185E780E003DA451 /* CoreLocation.framework */; };
+		68B6D939185E780E003DA451 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D930185E780E003DA451 /* libz.dylib */; };
+		68B6D93A185E780E003DA451 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D931185E780E003DA451 /* MobileCoreServices.framework */; };
+		68B6D93B185E780E003DA451 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D932185E780E003DA451 /* QuartzCore.framework */; };
+		68B6D93C185E780E003DA451 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D933185E780E003DA451 /* Security.framework */; };
+		68B6D93D185E780E003DA451 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D934185E780E003DA451 /* StoreKit.framework */; };
+		68B6D93E185E780E003DA451 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B6D935185E780E003DA451 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +71,16 @@
 		68B6D91D185E7750003DA451 /* ImageUploaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageUploaderTests-Info.plist"; sourceTree = "<group>"; };
 		68B6D91F185E7750003DA451 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68B6D921185E7750003DA451 /* ImageUploaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageUploaderTests.m; sourceTree = "<group>"; };
+		68B6D92B185E778E003DA451 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		68B6D92D185E780E003DA451 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		68B6D92E185E780E003DA451 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		68B6D92F185E780E003DA451 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		68B6D930185E780E003DA451 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		68B6D931185E780E003DA451 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		68B6D932185E780E003DA451 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		68B6D933185E780E003DA451 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		68B6D934185E780E003DA451 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		68B6D935185E780E003DA451 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,10 +88,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B6D936185E780E003DA451 /* AudioToolbox.framework in Frameworks */,
+				68B6D937185E780E003DA451 /* CFNetwork.framework in Frameworks */,
+				68B6D938185E780E003DA451 /* CoreLocation.framework in Frameworks */,
+				68B6D939185E780E003DA451 /* libz.dylib in Frameworks */,
+				68B6D93A185E780E003DA451 /* MobileCoreServices.framework in Frameworks */,
+				68B6D93B185E780E003DA451 /* QuartzCore.framework in Frameworks */,
+				68B6D93C185E780E003DA451 /* Security.framework in Frameworks */,
+				68B6D93D185E780E003DA451 /* StoreKit.framework in Frameworks */,
+				68B6D93E185E780E003DA451 /* SystemConfiguration.framework in Frameworks */,
 				68B6D8F0185E7750003DA451 /* CoreGraphics.framework in Frameworks */,
 				68B6D8F4185E7750003DA451 /* CoreData.framework in Frameworks */,
 				68B6D8F2185E7750003DA451 /* UIKit.framework in Frameworks */,
 				68B6D8EE185E7750003DA451 /* Foundation.framework in Frameworks */,
+				68B6D92C185E778E003DA451 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +141,16 @@
 		68B6D8EC185E7750003DA451 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68B6D92D185E780E003DA451 /* AudioToolbox.framework */,
+				68B6D92E185E780E003DA451 /* CFNetwork.framework */,
+				68B6D92F185E780E003DA451 /* CoreLocation.framework */,
+				68B6D930185E780E003DA451 /* libz.dylib */,
+				68B6D931185E780E003DA451 /* MobileCoreServices.framework */,
+				68B6D932185E780E003DA451 /* QuartzCore.framework */,
+				68B6D933185E780E003DA451 /* Security.framework */,
+				68B6D934185E780E003DA451 /* StoreKit.framework */,
+				68B6D935185E780E003DA451 /* SystemConfiguration.framework */,
+				68B6D92B185E778E003DA451 /* Parse.framework */,
 				68B6D8ED185E7750003DA451 /* Foundation.framework */,
 				68B6D8EF185E7750003DA451 /* CoreGraphics.framework */,
 				68B6D8F1185E7750003DA451 /* UIKit.framework */,
@@ -213,6 +253,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Symphny;
 				TargetAttributes = {
+					68B6D8E9185E7750003DA451 = {
+						DevelopmentTeam = W3S3ZGV56S;
+					};
 					68B6D912185E7750003DA451 = {
 						TestTargetID = 68B6D8E9185E7750003DA451;
 					};
@@ -394,10 +437,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jacobruiz/Documents/Learning/iOS/Sketches/ImageUploader,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageUploader/ImageUploader-Prefix.pch";
 				INFOPLIST_FILE = "ImageUploader/ImageUploader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -407,10 +457,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jacobruiz/Documents/Learning/iOS/Sketches/ImageUploader,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageUploader/ImageUploader-Prefix.pch";
 				INFOPLIST_FILE = "ImageUploader/ImageUploader-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
