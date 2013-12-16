@@ -10,7 +10,7 @@
 
 #import "DetailViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <UIImagePickerControllerDelegate>
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 @end
 
@@ -25,10 +25,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -217,6 +214,139 @@
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+}
+
+# pragma mark Bar Button Action Methods
+- (IBAction)launchCamera:(UIBarButtonItem *)sender {
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] == YES){
+        // Create image picker controller
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        
+        // Set source to the camera
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+        // Delegate is self
+        imagePicker.delegate = self;
+        
+        // Show image picker
+        [self presentViewController:imagePicker animated:YES completion:^{
+            // leaving this blank for now
+        }];
+    }
+    else{
+        // Device has no camera
+        UIImage *image;
+        int r = arc4random() % 5;
+        switch (r) {
+            case 0:
+                image = [UIImage imageNamed:@"ParseLogo.jpg"];
+                break;
+            case 1:
+                image = [UIImage imageNamed:@"Crowd.jpg"];
+                break;
+            case 2:
+                image = [UIImage imageNamed:@"Desert.jpg"];
+                break;
+            case 3:
+                image = [UIImage imageNamed:@"Lime.jpg"];
+                break;
+            case 4:
+                image = [UIImage imageNamed:@"Sunflowers.jpg"];
+                break;
+            default:
+                break;
+        }
+        
+        // Resize image
+        UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+        [image drawInRect: CGRectMake(0, 0, 640, 960)];
+        UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
+        [self uploadImage:imageData];
+    }
+    
+}
+
+- (IBAction)refresh:(UIBarButtonItem *)sender {
+    
+}
+
+# pragma mark Public Methods
+
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove from screen when the HUD hides
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
+- (void)uploadImage:(NSData *)imageData
+{
+    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+    
+    // HUD creation here (see example for code)
+    
+    // Save PFFile
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            // Hide old HUD, show completed HUD (see example for code)
+            
+            // Create a PFObject around a PFFile and associate it with the current user
+            PFObject *userPhoto = [PFObject objectWithClassName:@"UserPhoto"];
+            [userPhoto setObject:imageFile forKey:@"imageFile"];
+            
+            // Set the access control list to current user for security purposes
+            userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            
+            PFUser *user = [PFUser currentUser];
+            [userPhoto setObject:user forKey:@"user"];
+            
+            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    [self refresh:nil];
+                }
+                else {
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
+        else {
+            [HUD hide:YES];
+            // Log details of the failure
+            NSLog(@"%@ %@", error, [error userInfo]);
+        }
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+        HUD.progress = (float)percentDone/100;
+        float percent = (float)percentDone/100;
+        NSLog(@"percent done: %f", percent);
+    }];
+}
+
+# pragma mark imagePicker Delegate Methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    // Access the uncropped image from info dictionary
+    UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    // Dismiss controller
+    [picker dismissViewControllerAnimated:YES completion:^{
+        // leaving blank for now
+    }];
+    
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(640, 960));
+    [image drawInRect:CGRectMake(0, 0, 640, 960)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Upload image
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.05f);
+    [self uploadImage:imageData];
 }
 
 @end

@@ -36,6 +36,28 @@
     [testObject setObject:@"bar" forKey:@"foo"];
     [testObject save];
     
+    // Set up a dummy user
+    PFUser *currentUser = [PFUser currentUser];
+    if (currentUser) {
+        
+    }
+    else {
+        // Dummy username and password
+        PFUser *user = [PFUser user];
+        user.username = @"Waldo";
+        user.password = @"password";
+        user.email = @"waldo@example.com";
+        
+        [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+            }
+            else {
+                [PFUser logInWithUsername:@"Waldo" password:@"password"];
+            }
+        }];
+    }
+    
     return YES;
 }
 							
